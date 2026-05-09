@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Banarasi Paan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-leaf"></i> Banarasi Paan
+            </a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="benefits.html">Benefits</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Visual Journey</h1>
+            <p>Explore the artistry and craftsmanship behind every paan</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-tabs">
+                <button class="tab-btn active" onclick="filterGallery('all')">All</button>
+                <button class="tab-btn" onclick="filterGallery('products')">Products</button>
+                <button class="tab-btn" onclick="filterGallery('process')">Making Process</button>
+                <button class="tab-btn" onclick="filterGallery('shop')">Our Shop</button>
+                <button class="tab-btn" onclick="filterGallery('events')">Events</button>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- Products Gallery -->
+                <div class="gallery-item products" onclick="openModal(this)">
+                    <div class="gallery-image">🌿</div>
+                    <div class="overlay">
+                        <p>Saada Paan</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item products" onclick="openModal(this)">
+                    <div class="gallery-image">🌶️</div>
+                    <div class="overlay">
+                        <p>Masala Paan</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item products" onclick="openModal(this)">
+                    <div class="gallery-image">🥒</div>
+                    <div class="overlay">
+                        <p>Meetha Paan</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item products" onclick="openModal(this)">
+                    <div class="gallery-image">🍯</div>
+                    <div class="overlay">
+                        <p>Gulkand Paan</p>
+                    </div>
+                </div>
+
+                <!-- Making Process Gallery -->
+                <div class="gallery-item process" onclick="openModal(this)">
+                    <div class="gallery-image">👨‍🍳</div>
+                    <div class="overlay">
+                        <p>Selecting Fresh Leaves</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item process" onclick="openModal(this)">
+                    <div class="gallery-image">✋</div>
+                    <div class="overlay">
+                        <p>Hand Rolling Process</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item process" onclick="openModal(this)">
+                    <div class="gallery-image">🎨</div>
+                    <div class="overlay">
+                        <p>Ingredient Selection</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item process" onclick="openModal(this)">
+                    <div class="gallery-image">🔍</div>
+                    <div class="overlay">
+                        <p>Quality Check</p>
+                    </div>
+                </div>
+
+                <!-- Shop Gallery -->
+                <div class="gallery-item shop" onclick="openModal(this)">
+                    <div class="gallery-image">🏪</div>
+                    <div class="overlay">
+                        <p>Store Front</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item shop" onclick="openModal(this)">
+                    <div class="gallery-image">🛍️</div>
+                    <div class="overlay">
+                        <p>Product Display</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item shop" onclick="openModal(this)">
+                    <div class="gallery-image">👨‍💼</div>
+                    <div class="overlay">
+                        <p>Our Team</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item shop" onclick="openModal(this)">
+                    <div class="gallery-image">⭐</div>
+                    <div class="overlay">
+                        <p>Customer Testimonials</p>
+                    </div>
+                </div>
+
+                <!-- Events Gallery -->
+                <div class="gallery-item events" onclick="openModal(this)">
+                    <div class="gallery-image">🎉</div>
+                    <div class="overlay">
+                        <p>Diwali Celebration</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item events" onclick="openModal(this)">
+                    <div class="gallery-image">🎊</div>
+                    <div class="overlay">
+                        <p>Festival Events</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item events" onclick="openModal(this)">
+                    <div class="gallery-image">🏆</div>
+                    <div class="overlay">
+                        <p>Awards & Recognition</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item events" onclick="openModal(this)">
+                    <div class="gallery-image">📸</div>
+                    <div class="overlay">
+                        <p>Community Events</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption"></div>
+    </div>
+
+    <!-- Customer Reviews -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"The most authentic paan I've ever had! Takes me back to my childhood in Varanasi."</p>
+                    <p class="reviewer-name">- Rajesh Kumar</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Exceptional quality and taste. Every paan is crafted with such care and attention to detail."</p>
+                    <p class="reviewer-name">- Priya Sharma</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"Worth every penny. The ingredients are fresh and the flavors are perfectly balanced."</p>
+                    <p class="reviewer-name">- Vikram Singh</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text">"I've recommended Banarasi Paan to all my friends. It's truly the best in the market!"</p>
+                    <p class="reviewer-name">- Neha Verma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-alt">
+        <div class="container">
+            <h2>Ready to Experience It?</h2>
+            <a href="products.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Banarasi Paan</h4>
+                    <p>Preserving the authentic taste of Varanasi since 1947</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Varanasi, Uttar Pradesh, India</p>
+                    <p><i class="fas fa-phone"></i> +91-9876543210</p>
+                    <p><i class="fas fa-envelope"></i> info@banarasipaan.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Banarasi Paan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
