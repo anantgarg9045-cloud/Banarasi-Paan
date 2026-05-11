@@ -43,6 +43,16 @@
         </div>
     </section>
 
+    <!-- Search Bar -->
+    <section style="background: var(--light-bg); padding: 30px 20px;">
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for paan varieties... (e.g., Ice, Chocolate, Masala)">
+                <button onclick="searchProducts()"><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Filter Section -->
     <section class="products-intro">
         <div class="container">
@@ -294,6 +304,35 @@
             </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" onclick="scrollToTop()" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- WhatsApp Button -->
+    <button class="whatsapp-btn" onclick="openWhatsApp()" title="Order on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <!-- Compare Button -->
+    <button id="compareBtn" class="compare-btn" onclick="showComparison()">
+        Compare (0)
+    </button>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p><strong>🍪 Cookie Consent</strong></p>
+                <p>We use cookies to enhance your experience and analyze site traffic. By clicking "Accept", you agree to our <a href="#">Privacy Policy</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="rejectCookies">Reject</button>
+                <button id="acceptCookies">Accept</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script src="cart.js"></script>
