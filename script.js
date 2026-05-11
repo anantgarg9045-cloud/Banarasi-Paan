@@ -61,7 +61,10 @@ function filterProducts(category) {
     const buttons = document.querySelectorAll('.filter-btn');
 
     buttons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+
+    if (event && event.target) {
+        event.target.classList.add('active');
+    }
 
     items.forEach(item => {
         if (category === 'all' || item.classList.contains(category)) {
@@ -73,6 +76,20 @@ function filterProducts(category) {
         }
     });
 }
+
+// Initialize products filter on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    if (filterBtns.length > 0) {
+        filterBtns[0].classList.add('active');
+        // Show all products by default
+        const items = document.querySelectorAll('.product-item');
+        items.forEach(item => {
+            item.style.display = 'block';
+            item.classList.remove('hidden');
+        });
+    }
+});
 
 // Modal Functions for Gallery
 function openModal(element) {
