@@ -175,13 +175,30 @@ document.querySelectorAll('.product-card, .feature-card, .value-card, .benefit-c
 });
 
 // Add to Cart functionality
-document.querySelectorAll('.btn-small').forEach(btn => {
-    btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        const productName = this.closest('.product-card-large').querySelector('h3').textContent;
-        const price = this.closest('.product-card-large').querySelector('.price').textContent;
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.btn-small').forEach(btn => {
+        if (btn.textContent.includes('Add to Cart')) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                const card = this.closest('.product-card-large') || this.closest('.product-card');
 
-        alert(`Added ${productName} ${price} to your cart!`);
+                if (card) {
+                    const productName = card.querySelector('h3').textContent;
+                    const priceElement = card.querySelector('.price') || card.querySelector('.product-price');
+
+                    if (priceElement) {
+                        const priceText = priceElement.textContent;
+                        const price = parseInt(priceText.replace('₹', '').trim());
+
+                        if (typeof addToCart === 'function') {
+                            addToCart(productName, price);
+                        } else {
+                            console.error('addToCart function not found');
+                        }
+                    }
+                }
+            });
+        }
     });
 });
 

@@ -251,15 +251,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Find all "Add to Cart" buttons and update them
     const addToCartButtons = document.querySelectorAll('.btn-small');
     addToCartButtons.forEach(button => {
-        if (button.textContent.includes('Add to Cart') && !button.onclick) {
+        if (button.textContent.includes('Add to Cart')) {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 const card = this.closest('.product-card-large') || this.closest('.product-card');
                 if (card) {
                     const productName = card.querySelector('h3').textContent;
-                    const priceText = card.querySelector('.product-price').textContent;
-                    const price = parseInt(priceText.replace('₹', ''));
-                    addToCart(productName, price);
+                    const priceElement = card.querySelector('.price') || card.querySelector('.product-price');
+
+                    if (priceElement) {
+                        const priceText = priceElement.textContent;
+                        const price = parseInt(priceText.replace('₹', '').trim());
+
+                        if (!isNaN(price)) {
+                            addToCart(productName, price);
+                        }
+                    }
                 }
             });
         }
